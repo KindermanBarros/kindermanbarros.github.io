@@ -20,7 +20,7 @@ npm run build
 npm run preview
 ```
 
-O build gera `dist/` para `https://kindermanbarros.github.io`, sem domínio personalizado. O PDF fornecido está em `public/assets/kinderman-resume.pdf`.
+O build gera `dist/` e atualiza `index.html` e `assets/` na raiz para `https://kindermanbarros.github.io`, sem domínio personalizado. O PDF fornecido está em `public/assets/kinderman-resume.pdf`.
 
 ## GitHub Pages
 
@@ -39,10 +39,15 @@ O workflow `.github/workflows/pages.yml` valida pull requests e publica pushes e
 
 ## Estrutura
 
-- `index.html`: conteúdo, currículo e navegação.
+- `site/index.html`: fonte do conteúdo, currículo e navegação.
+- `index.html` e `assets/`: versão compilada para publicação estática, atualizada por `npm run build`.
+- `vite.config.js`: entrada e diretórios de produção.
+- `scripts/publish-static.mjs`: valida os arquivos e mantém a raiz publicável sem compilação.
 - `src/main.js`: apresentações e acessibilidade das interações.
 - `src/scene.js`: objetos, materiais, iluminação e interação Three.js.
 - `src/style.css`: direção visual, responsividade e impressão.
 - `tests/portfolio.test.mjs`: comportamento dos controles, teclado, PDF, redução de movimento e fallback.
 
 As fontes remotas são opcionais: o CSS possui fontes locais de fallback. Three.js é empacotado no build, sem depender de CDN em produção. A verificação automatizada cobre DOM e build; aparência final, WebGL e comportamento real em dispositivos ainda exigem revisão no navegador.
+
+A raiz contém o build completo para evitar que a publicação padrão por branch do GitHub Pages substitua a versão compilada por HTML de desenvolvimento. Após alterar o código, execute `npm run build` e inclua os arquivos gerados no commit. Ambos os caminhos de publicação entregam os mesmos arquivos estáticos.

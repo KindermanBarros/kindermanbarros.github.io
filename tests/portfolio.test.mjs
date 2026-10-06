@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
 import {JSDOM} from 'jsdom';
-const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
+const html=readFileSync(new URL('../site/index.html',import.meta.url),'utf8');
 const script=readFileSync(new URL('../src/main.js',import.meta.url),'utf8').replace("import './style.css';",'').replace("import('./scene.js')","Promise.reject(new Error('WebGL unavailable'))");
 function setup(reduced=false){const dom=new JSDOM(html,{url:'https://kindermanbarros.github.io',runScripts:'outside-only'});let observer;dom.window.matchMedia=()=>({matches:reduced,addEventListener(){}});dom.window.IntersectionObserver=class{constructor(callback){observer=callback}observe(){}disconnect(){}};dom.window.eval(script);return{dom,document:dom.window.document,observer:()=>observer([{isIntersecting:true}])}}
 test('resume and project remain available without JavaScript',()=>{const dom=new JSDOM(html);const d=dom.window.document;assert.match(d.querySelector('h1').textContent,/Engenharia/);assert.match(d.querySelector('#project-title').textContent,/Iontech/);assert.equal(d.querySelectorAll('.job').length,6);assert.equal(d.documentElement.lang,'pt-BR');for(const a of d.querySelectorAll('a[href^="#"]')){const id=a.getAttribute('href').slice(1);if(id)assert.ok(d.getElementById(id),id)}assert.ok(existsSync(new URL('../public/assets/kinderman-resume.pdf',import.meta.url)));assert.equal(readFileSync(new URL('../public/assets/kinderman-resume.pdf',import.meta.url)).subarray(0,4).toString(),'%PDF');dom.window.close()});
