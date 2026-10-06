@@ -31,7 +31,7 @@ O workflow `.github/workflows/pages.yml` valida pull requests e publica pushes e
 - Currículo baseado no PDF fornecido; experiência, formação, idiomas e certificações sem métricas inventadas.
 - SDO Companion descrito com base no README atual do seu repositório.
 - Iontech apresentado como contribuição realizada durante o vínculo de 2020–2021. O endereço solicitado redirecionou para `iontechmanaus.com` e não permitiu inspeção completa durante a implementação.
-- Prévias de projetos são **representações conceituais**, identificadas na interface; não são screenshots nem interfaces oficiais dos produtos.
+- SDO usa as quatro capturas reais fornecidas, em galeria deslizável com links para as imagens completas. A tela do celular 3D usa a captura do painel. Iontech aparece como identificação do projeto e link, sem uma interface inventada: a captura foi bloqueada pelo site.
 - A experiência XR apresenta a área de atuação e não revela projetos internos de P&D.
 - Botões do estúdio, clique nos objetos e tabs selecionam o mesmo projeto. Arrastar altera a perspectiva. Tabs têm navegação por setas, Home e End.
 - HTML semântico mantém o currículo e o primeiro projeto disponíveis sem JavaScript. Falha de WebGL mantém todos os projetos acessíveis pelos controles.
@@ -51,3 +51,5 @@ O workflow `.github/workflows/pages.yml` valida pull requests e publica pushes e
 As fontes remotas são opcionais: o CSS possui fontes locais de fallback. Three.js é empacotado no build, sem depender de CDN em produção. A verificação automatizada cobre DOM e build; aparência final, WebGL e comportamento real em dispositivos ainda exigem revisão no navegador.
 
 A raiz contém o build completo para evitar que a publicação padrão por branch do GitHub Pages substitua a versão compilada por HTML de desenvolvimento. Após alterar o código, execute `npm run build` e inclua os arquivos gerados no commit. Ambos os caminhos de publicação entregam os mesmos arquivos estáticos.
+
+Atualização mobile: controles em linhas de 48px, um objeto 3D por vez em telas estreitas, enquadramento adaptado e arraste com captura de ponteiro e limiar de 8px para distinguir um toque de um gesto.
