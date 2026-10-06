@@ -31,7 +31,7 @@ O workflow `.github/workflows/pages.yml` valida pull requests e publica pushes e
 - Currículo baseado no PDF fornecido; experiência, formação, idiomas e certificações sem métricas inventadas.
 - SDO Companion descrito com base no README atual do seu repositório.
 - Iontech apresentado como contribuição realizada durante o vínculo de 2020–2021. O endereço solicitado redirecionou para `iontechmanaus.com` e não permitiu inspeção completa durante a implementação.
-- SDO usa as quatro capturas reais fornecidas, em galeria deslizável com links para as imagens completas. A tela do celular 3D usa a captura do painel. Iontech aparece como identificação do projeto e link, sem uma interface inventada: a captura foi bloqueada pelo site.
+- SDO usa as quatro capturas reais fornecidas, em galeria deslizável com links para as imagens completas. A tela do celular 3D usa a captura do painel. Iontech usa a captura real fornecida pelo usuário, com link para ampliar. A mesma captura aparece proporcionalmente na tela do notebook 3D.
 - A experiência XR apresenta a área de atuação e não revela projetos internos de P&D.
 - Botões do estúdio, clique nos objetos e tabs selecionam o mesmo projeto. Arrastar altera a perspectiva. Tabs têm navegação por setas, Home e End.
 - HTML semântico mantém o currículo e o primeiro projeto disponíveis sem JavaScript. Falha de WebGL mantém todos os projetos acessíveis pelos controles.
