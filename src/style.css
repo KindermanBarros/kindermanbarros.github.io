@@ -41,3 +41,5 @@
 .site-project-cover strong{font:64px var(--serif);color:var(--ink);}
 .site-project-cover span{font-size:11px;letter-spacing:.08em;overflow-wrap:anywhere;}
 @media(max-width:700px){.site-project-cover{padding:30px;min-height:260px}.site-project-cover strong{font-size:52px}}
+
+.project-art:has(.xr-gallery){min-height:0;padding-bottom:48px}.xr-gallery figure{flex-basis:92%;max-width:none}.xr-gallery img{aspect-ratio:1052/592;object-fit:contain}
