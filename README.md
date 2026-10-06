@@ -1,2 +1,48 @@
-# kindermanbarros.github.io
-Portifólio Desenvolvido para o Oracle Next Generation
+# Kinderman Barros — currículo e portfólio
+
+Portfólio profissional em português, construído com Vite e Three.js. Paleta de carvão, vinho e metal envelhecido; tipografia editorial e um estúdio 3D que organiza a apresentação de Iontech, SDO Companion e experiência com Android XR.
+
+## Desenvolvimento
+
+Requer Node.js 22.12+ ou 24 e npm.
+
+```bash
+npm ci
+npm run dev
+```
+
+## Verificação e produção
+
+```bash
+npm run check
+npm test
+npm run build
+npm run preview
+```
+
+O build gera `dist/` e preserva o domínio existente de `CNAME` (`kinderman.me`). O PDF fornecido está em `public/assets/kinderman-resume.pdf`.
+
+## GitHub Pages
+
+O workflow `.github/workflows/pages.yml` valida pull requests e publica pushes em `main`. Em **Settings → Pages → Build and deployment**, selecionar **GitHub Actions** como fonte. A configuração administrativa do Pages não é modificada pelo código. O domínio existente precisa continuar configurado no Pages e no DNS.
+
+## Conteúdo e interação
+
+- Currículo baseado no PDF fornecido; experiência, formação, idiomas e certificações sem métricas inventadas.
+- SDO Companion descrito com base no README atual do seu repositório.
+- Iontech apresentado como contribuição realizada durante o vínculo de 2020–2021. O endereço solicitado redirecionou para `iontechmanaus.com` e não permitiu inspeção completa durante a implementação.
+- Prévias de projetos são **representações conceituais**, identificadas na interface; não são screenshots nem interfaces oficiais dos produtos.
+- A experiência XR apresenta a área de atuação e não revela projetos internos de P&D.
+- Botões do estúdio, clique nos objetos e tabs selecionam o mesmo projeto. Arrastar altera a perspectiva. Tabs têm navegação por setas, Home e End.
+- HTML semântico mantém o currículo e o primeiro projeto disponíveis sem JavaScript. Falha de WebGL mantém todos os projetos acessíveis pelos controles.
+- `prefers-reduced-motion` inicia a cena sem movimento; botão permite pausar. Renderização suspensa fora da viewport e em aba oculta; resolução limitada a 1,5x e Three.js carregado separadamente.
+
+## Estrutura
+
+- `index.html`: conteúdo, currículo e navegação.
+- `src/main.js`: apresentações e acessibilidade das interações.
+- `src/scene.js`: objetos, materiais, iluminação e interação Three.js.
+- `src/style.css`: direção visual, responsividade e impressão.
+- `tests/portfolio.test.mjs`: comportamento dos controles, teclado, PDF, redução de movimento e fallback.
+
+As fontes remotas são opcionais: o CSS possui fontes locais de fallback. Three.js é empacotado no build, sem depender de CDN em produção. A verificação automatizada cobre DOM e build; aparência final, WebGL e comportamento real em dispositivos ainda exigem revisão no navegador.
