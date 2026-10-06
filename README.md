@@ -31,7 +31,7 @@ O workflow `.github/workflows/pages.yml` valida pull requests e publica pushes e
 - Currículo baseado no PDF fornecido; experiência, formação, idiomas e certificações sem métricas inventadas.
 - SDO Companion descrito com base no README atual do seu repositório.
 - Iontech apresentado como contribuição realizada durante o vínculo de 2020–2021. O endereço solicitado redirecionou para `iontechmanaus.com` e não permitiu inspeção completa durante a implementação.
-- SDO usa as quatro capturas reais fornecidas, em galeria deslizável com links para as imagens completas. A tela do celular 3D usa a captura do painel. Iontech usa a captura real fornecida pelo usuário, com link para ampliar. A mesma captura aparece proporcionalmente na tela do notebook 3D.
+- SDO usa as quatro capturas reais fornecidas, em galeria deslizável com links para as imagens completas. A tela do celular 3D usa a captura do painel. Iontech usa a captura real fornecida pelo usuário, com link para ampliar. A tela do notebook 3D adapta a captura para um layout horizontal, preservando fachada, logo, verde e textos do site e removendo a barra do navegador.
 - A experiência XR apresenta a área de atuação e não revela projetos internos de P&D.
 - Botões do estúdio, clique nos objetos e tabs selecionam o mesmo projeto. Arrastar altera a perspectiva. Tabs têm navegação por setas, Home e End.
 - HTML semântico mantém o currículo e o primeiro projeto disponíveis sem JavaScript. Falha de WebGL mantém todos os projetos acessíveis pelos controles.
@@ -53,3 +53,5 @@ As fontes remotas são opcionais: o CSS possui fontes locais de fallback. Three.
 A raiz contém o build completo para evitar que a publicação padrão por branch do GitHub Pages substitua a versão compilada por HTML de desenvolvimento. Após alterar o código, execute `npm run build` e inclua os arquivos gerados no commit. Ambos os caminhos de publicação entregam os mesmos arquivos estáticos.
 
 Atualização mobile: controles em linhas de 48px, um objeto 3D por vez em telas estreitas, enquadramento adaptado e arraste com captura de ponteiro e limiar de 8px para distinguir um toque de um gesto.
+
+Os óculos Three.js seguem a referência fornecida: armação verde-escura arredondada, lentes transparentes, ponte superior, hastes largas, pontas curvadas e módulos de câmera próximos às lentes.
