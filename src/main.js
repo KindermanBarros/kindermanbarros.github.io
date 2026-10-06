@@ -11,3 +11,23 @@ const tabs=[...document.querySelectorAll('[role=tab]')];tabs.forEach((tab,i)=>ta
 function setPaused(value){paused=value;scene?.pause(paused)}window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',e=>setPaused(e.matches));selectProject(active);
 // Core content is available before WebGL or its optional module loads.
 const host=document.querySelector('#scene');const observer=new IntersectionObserver(async entries=>{if(!entries.some(e=>e.isIntersecting))return;observer.disconnect();try{const {createStudio}=await import('./scene.js');scene=createStudio(host,selectProject,paused);scene.select(active)}catch{document.querySelector('.scene-instructions>span').textContent='Explore os projetos pelos botões abaixo';host.setAttribute('aria-label','Apresentação dos projetos sem animação 3D')}},{rootMargin:'150px'});observer.observe(host);
+
+const artHost=document.querySelector('#project-art');
+let galleryDrag=null;
+artHost.addEventListener('pointerdown',event=>{
+ const gallery=event.target.closest('.screenshot-gallery');
+ if(!gallery||event.pointerType!=='mouse'||event.button!==0)return;
+ galleryDrag={gallery,x:event.clientX,scroll:gallery.scrollLeft,moved:false};
+});
+window.addEventListener('pointermove',event=>{
+ if(!galleryDrag)return;
+ const delta=event.clientX-galleryDrag.x;
+ if(Math.abs(delta)>6){galleryDrag.moved=true;galleryDrag.gallery.classList.add('dragging');event.preventDefault();galleryDrag.gallery.scrollLeft=galleryDrag.scroll-delta;}
+});
+window.addEventListener('pointerup',()=>{
+ if(!galleryDrag)return;
+ const state=galleryDrag;state.gallery.classList.remove('dragging');galleryDrag=null;
+ if(state.moved){const cancel=event=>{event.preventDefault();event.stopPropagation()};state.gallery.addEventListener('click',cancel,{capture:true,once:true});setTimeout(()=>state.gallery.removeEventListener('click',cancel,true),0);}
+});
+window.addEventListener('pointercancel',()=>{galleryDrag?.gallery.classList.remove('dragging');galleryDrag=null});
+artHost.addEventListener('keydown',event=>{const gallery=event.target.closest('.screenshot-gallery');if(!gallery||!['ArrowLeft','ArrowRight'].includes(event.key))return;event.preventDefault();gallery.scrollBy({left:(event.key==='ArrowRight'?1:-1)*gallery.clientWidth*.8,behavior:paused?'instant':'smooth'})});
