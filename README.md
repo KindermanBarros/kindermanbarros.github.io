@@ -20,11 +20,11 @@ npm run build
 npm run preview
 ```
 
-O build gera `dist/` e preserva o domínio existente de `CNAME` (`kinderman.me`). O PDF fornecido está em `public/assets/kinderman-resume.pdf`.
+O build gera `dist/` para `https://kindermanbarros.github.io`, sem domínio personalizado. O PDF fornecido está em `public/assets/kinderman-resume.pdf`.
 
 ## GitHub Pages
 
-O workflow `.github/workflows/pages.yml` valida pull requests e publica pushes em `main`. Em **Settings → Pages → Build and deployment**, selecionar **GitHub Actions** como fonte. A configuração administrativa do Pages não é modificada pelo código. O domínio existente precisa continuar configurado no Pages e no DNS.
+O workflow `.github/workflows/pages.yml` valida pull requests e publica pushes em `main`. Em **Settings → Pages → Build and deployment**, selecionar **GitHub Actions** como fonte. A configuração administrativa do Pages não é modificada pelo código. O campo Custom domain deve permanecer vazio.
 
 ## Conteúdo e interação
 
